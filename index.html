@@ -3,251 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Veterinaria - Catálogo de Servicios</title>
+    <title>Catálogo Futurista</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
         }
+
+        /* Navegación */
         header {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.9));
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.2);
         }
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        header p {
-            font-size: 1.1rem;
-            color: #ddd;
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .catalogo {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+        .nav-links {
+            display: flex;
             gap: 2rem;
+            list-style: none;
         }
-        .servicio {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
         }
-        .servicio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+        .nav-links a:hover {
+            color: #00d4ff;
         }
-        .servicio-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #8a2be2, #00d4ff);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            padding: 3rem 2rem;
             text-align: center;
         }
-        .servicio-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .servicio-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .servicio-body {
-            padding: 1.5rem;
-        }
-        .servicio-body p {
-            color: #666;
+
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
+            background: linear-gradient(135deg, #00d4ff, #8a2be2, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
         }
-        .servicio-precio {
-            background: #f0f0f0;
-            padding: 1rem;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            color: #667eea;
+
+        .hero p {
             font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .servicio-detalle {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-            font-size: 0.9rem;
+
+        .search-container {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #8a2be2;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input::placeholder {
             color: #888;
         }
+
+        .search-container input:focus {
+            outline: none;
+            background: rgba(138, 43, 226, 0.1);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            border-color: #00d4ff;
+        }
+
+        /* Filtros */
+        .filters {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid rgba(138, 43, 226, 0.4);
+            background: rgba(138, 43, 226, 0.1);
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            border-color: #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Grid de Productos */
+        .catalog {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.4);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translate(-50%, -50%);
+            }
+            100% {
+                transform: translate(50%, 50%);
+            }
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff006e, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-add {
+            padding: 0.7rem 1.2rem;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-add:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Footer */
         footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            border-top: 2px solid rgba(138, 43, 226, 0.3);
+            margin-top: 5rem;
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            color: #888;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .product-image {
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navegación -->
     <header>
-        <h1>🐾 Clínica Veterinaria</h1>
-        <p>Catálogo de Servicios - Tu mascota merece lo mejor</p>
+        <nav>
+            <div class="logo">NEXUS</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="catalogo">
-            <!-- Servicio 1 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">💉</div>
-                    <h3>Vacunación</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Protege a tu mascota con nuestro completo programa de vacunación. Incluye todas las vacunas esenciales recomendadas.</p>
-                    <div class="servicio-precio">$50 - $150</div>
-                    <div class="servicio-detalle">
-                        <strong>Incluye:</strong> Revisión, aplicación de vacuna, certificado
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>Bienvenido al Futuro</h1>
+        <p>Descubre nuestra colección exclusiva de productos innovadores</p>
+        <div class="search-container">
+            <input type="text" placeholder="Busca productos...">
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filters">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">Nuevos</button>
+        <button class="filter-btn">Populares</button>
+        <button class="filter-btn">Ofertas</button>
+        <button class="filter-btn">Premium</button>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="catalog" id="catalogo">
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <h3 class="product-title">Auriculares Pro</h3>
+                    <p class="product-description">Tecnología de sonido envolvente</p>
+                    <div class="product-footer">
+                        <span class="product-price">$299</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 2 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🛁</div>
-                    <h3>Baño y Grooming</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Servicio completo de baño, corte de uñas, limpieza de oídos y peinado profesional.</p>
-                    <div class="servicio-precio">$60 - $120</div>
-                    <div class="servicio-detalle">
-                        <strong>Duración:</strong> 1.5 - 2 horas
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <h3 class="product-title">Smartwatch Elite</h3>
+                    <p class="product-description">Control total en tu muñeca</p>
+                    <div class="product-footer">
+                        <span class="product-price">$399</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 3 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🦷</div>
-                    <h3>Limpieza Dental</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Limpieza profesional de dientes y prevención de enfermedades bucales. Mantén sonrisa sana.</p>
-                    <div class="servicio-precio">$80 - $200</div>
-                    <div class="servicio-detalle">
-                        <strong>Incluye:</strong> Anestesia segura, limpieza completa
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <h3 class="product-title">Smartphone X</h3>
+                    <p class="product-description">Pantalla OLED de última generación</p>
+                    <div class="product-footer">
+                        <span class="product-price">$899</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 4 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🩺</div>
-                    <h3>Consulta General</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Revisión completa de salud, diagnóstico y recomendaciones de tratamiento por veterinario certificado.</p>
-                    <div class="servicio-precio">$40 - $80</div>
-                    <div class="servicio-detalle">
-                        <strong>Duración:</strong> 30 - 45 minutos
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <h3 class="product-title">Laptop Quantum</h3>
+                    <p class="product-description">Procesador de próxima generación</p>
+                    <div class="product-footer">
+                        <span class="product-price">$1,299</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 5 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🔬</div>
-                    <h3>Análisis de Laboratorio</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Pruebas de sangre, análisis de orina y otros exámenes diagnósticos de precisión.</p>
-                    <div class="servicio-precio">$35 - $150</div>
-                    <div class="servicio-detalle">
-                        <strong>Resultados:</strong> 24 - 48 horas
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image">🎮</div>
+                <div class="product-info">
+                    <h3 class="product-title">Console Gaming</h3>
+                    <p class="product-description">Experimenta la realidad virtual</p>
+                    <div class="product-footer">
+                        <span class="product-price">$499</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 6 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🏥</div>
-                    <h3>Cirugía</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Procedimientos quirúrgicos especializados con equipo moderno y anestesia segura.</p>
-                    <div class="servicio-precio">$200 - $1000+</div>
-                    <div class="servicio-detalle">
-                        <strong>Incluye:</strong> Pre-operatorio, cirugía, post-operatorio
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-image">🎥</div>
+                <div class="product-info">
+                    <h3 class="product-title">Cámara 8K</h3>
+                    <p class="product-description">Captura momentos en ultra definición</p>
+                    <div class="product-footer">
+                        <span class="product-price">$1,199</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 7 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">💊</div>
-                    <h3>Farmacia</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Amplio inventario de medicamentos, suplementos y productos de salud para mascotas.</p>
-                    <div class="servicio-precio">Precios variables</div>
-                    <div class="servicio-detalle">
-                        <strong>Disponible:</strong> Con receta o recomendación veterinaria
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <div class="product-image">🔊</div>
+                <div class="product-info">
+                    <h3 class="product-title">Altavoz Inteligente</h3>
+                    <p class="product-description">Control por voz IA avanzada</p>
+                    <div class="product-footer">
+                        <span class="product-price">$179</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 8 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🐕‍🦺</div>
-                    <h3>Entrenamiento</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Clases de obediencia, socialización y modificación de comportamiento para tu mascota.</p>
-                    <div class="servicio-precio">$100 - $300/mes</div>
-                    <div class="servicio-detalle">
-                        <strong>Sesiones:</strong> Individuales o grupales
-                    </div>
-                </div>
-            </div>
-
-            <!-- Servicio 9 -->
-            <div class="servicio">
-                <div class="servicio-header">
-                    <div class="servicio-icon">🏨</div>
-                    <h3>Hospedaje</h3>
-                </div>
-                <div class="servicio-body">
-                    <p>Alojamiento seguro y cómodo con supervisión profesional y cuidados diarios.</p>
-                    <div class="servicio-precio">$25 - $50/día</div>
-                    <div class="servicio-detalle">
-                        <strong>Incluye:</strong> Alimentación, ejercicio, entretenimiento
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <div class="product-image">⚡</div>
+                <div class="product-info">
+                    <h3 class="product-title">Power Bank Ultra</h3>
+                    <p class="product-description">Carga rápida 100W</p>
+                    <div class="product-footer">
+                        <span class="product-price">$89</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Clínica Veterinaria. Todos los derechos reservados.</p>
-        <p>📞 Contacto | 📧 info@clinicaveterinaria.com | 🕐 Abierto 24/7</p>
+        <p>&copy; 2025 Catálogo Futurista. Todos los derechos reservados.</p>
+        <p>Diseño moderno • Tecnología avanzada • Experiencia premium</p>
     </footer>
 </body>
 </html>
