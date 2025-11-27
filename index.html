@@ -1,11 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puntos</title>
+    <title>Clínica Veterinaria - Catálogo de Servicios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .servicio {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .servicio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .servicio-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .servicio-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .servicio-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .servicio-body {
+            padding: 1.5rem;
+        }
+        .servicio-body p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .servicio-precio {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+        .servicio-detalle {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>🐾 Clínica Veterinaria</h1>
+        <p>Catálogo de Servicios - Tu mascota merece lo mejor</p>
+    </header>
+
+    <div class="container">
+        <div class="catalogo">
+            <!-- Servicio 1 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">💉</div>
+                    <h3>Vacunación</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Protege a tu mascota con nuestro completo programa de vacunación. Incluye todas las vacunas esenciales recomendadas.</p>
+                    <div class="servicio-precio">$50 - $150</div>
+                    <div class="servicio-detalle">
+                        <strong>Incluye:</strong> Revisión, aplicación de vacuna, certificado
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🛁</div>
+                    <h3>Baño y Grooming</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Servicio completo de baño, corte de uñas, limpieza de oídos y peinado profesional.</p>
+                    <div class="servicio-precio">$60 - $120</div>
+                    <div class="servicio-detalle">
+                        <strong>Duración:</strong> 1.5 - 2 horas
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🦷</div>
+                    <h3>Limpieza Dental</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Limpieza profesional de dientes y prevención de enfermedades bucales. Mantén sonrisa sana.</p>
+                    <div class="servicio-precio">$80 - $200</div>
+                    <div class="servicio-detalle">
+                        <strong>Incluye:</strong> Anestesia segura, limpieza completa
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 4 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🩺</div>
+                    <h3>Consulta General</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Revisión completa de salud, diagnóstico y recomendaciones de tratamiento por veterinario certificado.</p>
+                    <div class="servicio-precio">$40 - $80</div>
+                    <div class="servicio-detalle">
+                        <strong>Duración:</strong> 30 - 45 minutos
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 5 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🔬</div>
+                    <h3>Análisis de Laboratorio</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Pruebas de sangre, análisis de orina y otros exámenes diagnósticos de precisión.</p>
+                    <div class="servicio-precio">$35 - $150</div>
+                    <div class="servicio-detalle">
+                        <strong>Resultados:</strong> 24 - 48 horas
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 6 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🏥</div>
+                    <h3>Cirugía</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Procedimientos quirúrgicos especializados con equipo moderno y anestesia segura.</p>
+                    <div class="servicio-precio">$200 - $1000+</div>
+                    <div class="servicio-detalle">
+                        <strong>Incluye:</strong> Pre-operatorio, cirugía, post-operatorio
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 7 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">💊</div>
+                    <h3>Farmacia</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Amplio inventario de medicamentos, suplementos y productos de salud para mascotas.</p>
+                    <div class="servicio-precio">Precios variables</div>
+                    <div class="servicio-detalle">
+                        <strong>Disponible:</strong> Con receta o recomendación veterinaria
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 8 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🐕‍🦺</div>
+                    <h3>Entrenamiento</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Clases de obediencia, socialización y modificación de comportamiento para tu mascota.</p>
+                    <div class="servicio-precio">$100 - $300/mes</div>
+                    <div class="servicio-detalle">
+                        <strong>Sesiones:</strong> Individuales o grupales
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 9 -->
+            <div class="servicio">
+                <div class="servicio-header">
+                    <div class="servicio-icon">🏨</div>
+                    <h3>Hospedaje</h3>
+                </div>
+                <div class="servicio-body">
+                    <p>Alojamiento seguro y cómodo con supervisión profesional y cuidados diarios.</p>
+                    <div class="servicio-precio">$25 - $50/día</div>
+                    <div class="servicio-detalle">
+                        <strong>Incluye:</strong> Alimentación, ejercicio, entretenimiento
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Clínica Veterinaria. Todos los derechos reservados.</p>
+        <p>📞 Contacto | 📧 info@clinicaveterinaria.com | 🕐 Abierto 24/7</p>
+    </footer>
 </body>
 </html>
